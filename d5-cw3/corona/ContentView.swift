@@ -9,12 +9,18 @@ import SwiftUI
 
 
 // يجب عمل هيكل وكائنات من الهيكل
-
+var people1 = [
+    UserCovidInfo(fullName: "روان", area: "العدان", numberOfDoses: 1),
+    
+    UserCovidInfo(fullName: "اسماء", area: "صباح السالم", numberOfDoses:2 ),
+    
+    UserCovidInfo(fullName: "سارة", area: "السلام", numberOfDoses: 2)
+]
 
 struct ContentView: View {
     var body: some View {
         ZStack{
-            Color.gray
+            Color.green
                 .opacity(0.3)
                 .ignoresSafeArea()
             VStack{
@@ -24,38 +30,49 @@ struct ContentView: View {
                 Text("حالات كورونا الجديدة")
                     .font(.system(size: 30, weight: .bold, design: .default))
                     .padding()
-                // name of new cases
-                VStack{
+                
+                List(people1,id:\.id){ i in
+                  
+                    Text("name:\(i.fullName)")
+                    Text("area: \(i.area)")
+                    Text("numberofdoses:\(i.numberOfDoses)")
+                  // عدد الجرعات
+               }
+                
+                    
+
         // الحالة الأولى
                 // الاسم
-               Text("")
+                  
 // المنطقة
-                Text("")
-                    // عدد الجرعات
-               Text("")
+              
+                
 
-                Divider()
-                }
-                VStack{
+//                Divider()
+//                }
+//                VStack{
         // الحالة الثانية
                 // الاسم
-               Text("")
+           //   Text("الاسم: \(.fullName)")
                 // المنطقة
-               Text("")
-    // عدد الجرعات
-               Text("")
-
-                Divider()
+//               Text("المنطقة: \(people1[1].area)")
+//    // عدد الجرعات
+//               Text("عدد الجرعات: \(people1[1].numberOfDoses)")
+//
+//                Divider()
+//                }
+//                VStack{
+//              // الحالة الثالثة
+//                      // الاسم
+//                     Text("الاسم: \(people1[2].fullName)")
+//                      // المنطقة
+//                     Text("المنطقة: \(people1[2].area)")
+//          // عدد الجرعات
+//                     Text("عدد الجرعات: \(people1[2].numberOfDoses)")
+//
+                 
                 }
-                VStack{
-              // الحالة الثالثة
-                      // الاسم
-                     Text("")
-                      // المنطقة
-                     Text("")
-          // عدد الجرعات
-                     Text("")
-                }
+            VStack{
                 Spacer()
                 HStack{
                     Text("آخر تحديث ١٥-٣-٢٠٢٢")
@@ -68,14 +85,16 @@ struct ContentView: View {
                 .border(Color.white, width: 5)
                 .cornerRadius(10)
             }
+            }
         }
-    }
-}
+  
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
+}
 }
 
 
